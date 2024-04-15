@@ -1,0 +1,33 @@
+# spellcheck.yaml
+matrix:
+  - name: JavaScript
+    aspell:
+      lang: en
+      d: en_US
+    dictionary:
+      wordlists:
+      - ./en-custom.txt
+    sources:
+      - '**/*.js'
+      - '**/*.json'
+      - '**/*.md'
+      # - '**/*.ts
+    pipeline:
+      - pyspelling.filters.javascript
+      - pyspelling.filters.text
+    expect_match: false
+    default_encoding: utf-8
+    # files:
+    #   - "*.md"
+    #   - "*.txt"
+    #   - "*.yml"
+    exclude:
+      - "node_modules/"
+      - "build/"
+    options:
+      ignore:
+        - "pyspelling"
+        - "GitHub"
+    custom:
+      - "localhost"
+

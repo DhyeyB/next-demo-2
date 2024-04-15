@@ -1,0 +1,68 @@
+name: Release Please testing
+on:
+  push:
+    branches: 
+      - main
+      - staging
+      - dev
+      - feature
+
+# permissions:
+#   contents: write
+#   pull-requests: write
+
+jobs:
+  conventional-commits:
+    name: Conventional Commits
+    runs-on: ubuntu-latest
+    permissions:
+        contents: read
+    steps:
+        - uses: actions/checkout@v3
+
+        - uses: webiny/action-conventional-commits@v1.2.0
+          with:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              allowed-commit-types: "docs,fix,feat,chore,style,refactor,perf,test"
+
+              
+# jobs:
+#   slackNotification:
+#     name: Slack Notification
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Slack Notification
+#       uses: rtCamp/action-slack-notify@v2
+#       env:
+#         # SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+#         SLACK_CHANNEL: random
+#         SLACK_USERNAME: dhyey
+
+# jobs:
+#   spell-check:
+#     name: spell check
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+
+#       - name: check-spelling
+#         id: spelling
+#         uses: check-spelling/check-spelling@main
+#         with:
+#           extra_dictionaries:
+#             ./en-custom.txt
+#             cspell:software-terms/dict/softwareTerms.txt
+#             cspell:npm/dict/npm.txt
+#             cspell:typescript/dict/typescript.txt
+#             cspell:node/dict/node.txt
+
+      # - uses: wow-actions/spell-checker@v1
+      #   with:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     include: **/*.md
+
+      # - uses: rojopolis/spellcheck-github-actions@0.35.0
+      #   name: Spellcheck
+      #   with:
+      #     config: ./spellcheck.yaml
