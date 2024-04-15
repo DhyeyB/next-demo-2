@@ -1,29 +1,29 @@
-name: Release Please testing
-on:
-  push:
-    branches: 
-      - main
-      - staging
-      - dev
-      - feature
+# name: Release Please testing
+# on:
+#   push:
+#     branches: 
+#       - main
+#       - staging
+#       - dev
+#       - feature
 
 # permissions:
 #   contents: write
 #   pull-requests: write
 
-jobs:
-  conventional-commits:
-    name: Conventional Commits
-    runs-on: ubuntu-latest
-    permissions:
-        contents: read
-    steps:
-        - uses: actions/checkout@v3
+# jobs:
+#   conventional-commits:
+#     name: Conventional Commits
+#     runs-on: ubuntu-latest
+#     permissions:
+#         contents: read
+#     steps:
+#         - uses: actions/checkout@v3
 
-        - uses: webiny/action-conventional-commits@v1.2.0
-          with:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              allowed-commit-types: "docs,fix,feat,chore,style,refactor,perf,test"
+#         - uses: webiny/action-conventional-commits@v1.2.0
+#           with:
+#               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#               allowed-commit-types: "docs,fix,feat,chore,style,refactor,perf,test"
 
               
 # jobs:
